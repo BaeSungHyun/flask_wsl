@@ -72,4 +72,22 @@ def create_app():
     def teardown_appcontext(exception):
         app.logger.info("TEARDOWN_APPCONTEXT")
 
+    '''=== Method & Request context Practice ==='''
+    from flask import request
+    @app.route('/test/method/<id>', methods=['GET', 'POST', 'DELETE', 'PUT'])
+    def method_test(id):
+
+        # app.logger.info(f"{request.content_type}") 
+        return jsonify({ # request가 자동으로  지원하는 method들. request context!
+            'request.host':request.host,
+            'request.path':request.path,
+            'request.url':request.url,
+            'request.args':request.args,
+            'request.form':request.form,
+            'request.form.test':request.form.get('test'),
+            # Did not attempt to load JSON data because the request Content-Type was not &#39;application/json&#39;
+            # 'request.json':request.json, 
+            'request.method':request.method,
+        })
+
     return app
