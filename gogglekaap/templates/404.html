@@ -1,0 +1,16 @@
+{% extends "/layout.html" %}
+
+<!-- '-' means to 빈 공백 제거-->
+{% block title -%}
+Not Found
+{%- endblock %}
+
+{% block head -%}
+    {{ super() }}
+{%- endblock %}
+
+{% block body -%}
+<h1 style="text-align: center; margin-top: 20%">
+    <b>Page Not Found</b>
+</h1>
+{%- endblock %}
